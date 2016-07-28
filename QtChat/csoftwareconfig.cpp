@@ -1,4 +1,4 @@
-#include "csoftwareconfig.h"
+﻿#include "csoftwareconfig.h"
 
 CSoftwareConfig::CSoftwareConfig()
 {

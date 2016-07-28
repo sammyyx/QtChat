@@ -1,7 +1,7 @@
-#include "cudpbase.h"
+﻿#include "cudpbase.h"
 void CUdpBase::SendProcess(CSoftwareConfig config)
 {
-    qDebug("服务器发送信息");
+    qDebug("服务器发送消息");
     QByteArray datagram=CMsgOperation::createChatMsg(config);
     udpSocket->writeDatagram(datagram.data(),datagram.size(),remoteIP,remoteUpdPort);
 }

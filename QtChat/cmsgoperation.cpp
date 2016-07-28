@@ -1,4 +1,4 @@
-#include "cmsgoperation.h"
+﻿#include "cmsgoperation.h"
 #include <QJsonDocument>
 
 CMsgOperation::CMsgOperation()
@@ -40,8 +40,8 @@ QByteArray CMsgOperation::createChatMsg(QString username, QString fontFamily, in
     fontStyleMap.insert("isItatic", itaticVariant);
     fontStyleMap.insert("isBold", boldVariant);
     QMap<QString, QVariant> rbgVariant;
-    int r,b,g;
-    color.getRgb(&r, &b, &g);
+    int r,g,b;
+    color.getRgb(&r, &g, &b);
     rbgVariant.insert("r", r);
     rbgVariant.insert("b", b);
     rbgVariant.insert("g", g);
@@ -79,8 +79,8 @@ QByteArray CMsgOperation::createChatMsg(CSoftwareConfig config)
     QVariant fontStyleMapVar(fontStyleMap);
 
     QMap<QString, QVariant> chatContentMap;
-    chatContentMap.insert("userName",config.sendUsr);
-    chatContentMap.insert("content", config.sendMsg);
+    chatContentMap.insert("userName",config.chatUsr);
+    chatContentMap.insert("content", config.chatMsg);
     chatContentMap.insert("fontStyle", fontStyleMapVar);
     QVariant chatMsgContent(chatContentMap);
     QMap<QString, QVariant> chatMsgMap;

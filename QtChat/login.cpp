@@ -1,4 +1,4 @@
-#include "login.h"
+﻿#include "login.h"
 #include "ui_login.h"
 #include "cdatabaseoperation.h"
 
@@ -50,13 +50,13 @@ void Login::clicksignup()
     QString userpwd = ui->password->text();
     QSqlQuery q;
     if (!q.exec("select * from userinfo")) {
-        QMessageBox::critical(this, "读取数据库出错", q.lastError().text());
+        QMessageBox::critical(this, "读取数据库错误", q.lastError().text());
         return;
     }
     while (q.next()) {
         QString db_username = q.value(0).toString();
         if (db_username == username) {
-            QMessageBox::information(this, "提示", "用户名" + username + "已存在，无须注册！");
+            QMessageBox::information(this, "提示", "用户名" + username + "已存在，无需注册！");
             return;
         }
     }

@@ -1,4 +1,4 @@
-#include "cdatabaseoperation.h"
+﻿#include "cdatabaseoperation.h"
 
 CDatabaseOperation::CDatabaseOperation()
 {
@@ -122,9 +122,4 @@ QSqlError CDatabaseOperation::getWidgetConfig(QSqlQuery &q, QString username, CS
         config->fontConfig.bold = q.value(7).toInt() == 1 ? true : false;
     }
     return QSqlError();
-}
-
-void CDatabaseOperation::showError(const QSqlError &err, QWidget *pthis) {
-    QMessageBox::critical(pthis, "Unable to initialize Database",
-                          "Error initializing database: " + err.text());
 }
