@@ -4,6 +4,7 @@
 #include <QtSql>
 #include <QtWidgets>
 
+#define DATABASE_NAME "account.db"
 class CDatabaseOperation
 {
 public:

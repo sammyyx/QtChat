@@ -6,7 +6,8 @@ CMsgOperation::CMsgOperation()
 
 }
 
-QByteArray CMsgOperation::createBroadcast(int mode, QString username, QString ipAddress)
+QByteArray
+CMsgOperation::createBroadcast(int mode, QString username, QString ipAddress)
 {
     QMap<QString, QVariant> broadcastContentMap;
     QVariant usernameVariant(username);
@@ -20,16 +21,18 @@ QByteArray CMsgOperation::createBroadcast(int mode, QString username, QString ip
     return broadcastJsonDocument.toJson();
 }
 
-QJsonObject CMsgOperation::getJsonObject(QByteArray byteArray)
+QJsonObject
+CMsgOperation::getJsonObject(QByteArray byteArray)
 {
     QJsonDocument broadcastDocument = QJsonDocument::fromJson(byteArray);
     return broadcastDocument.object();
 }
 
-QByteArray CMsgOperation::createChatMsg(QString username, QString fontFamily, int fontPointSize,
+QByteArray
+CMsgOperation::createChatMsg(QString username, QString fontFamily, int fontPointSize,
                                         QColor color, bool itatic, bool bold, QString textContent)
 {
-    //设置字体相关
+    //formatting font properties to json string.
     QMap<QString, QVariant> fontStyleMap;
     QVariant fontFamilyVariant(fontFamily);
     QVariant fontPointSizeVariant(fontPointSize);
@@ -49,6 +52,7 @@ QByteArray CMsgOperation::createChatMsg(QString username, QString fontFamily, in
     fontStyleMap.insert("color", colorStyle);
     QVariant fontStyleMapVar(fontStyleMap);
 
+    //formatting chat properties to json string.
     QMap<QString, QVariant> chatContentMap;
     chatContentMap.insert("userName",username);
     chatContentMap.insert("content", textContent);
@@ -57,9 +61,12 @@ QByteArray CMsgOperation::createChatMsg(QString username, QString fontFamily, in
     QMap<QString, QVariant> chatMsgMap;
     chatMsgMap.insert("chatMsg", chatMsgContent);
     QJsonDocument chatMsgDocument(QJsonObject::fromVariantMap(chatMsgMap));
+
     return chatMsgDocument.toJson();
 }
-QByteArray CMsgOperation::createChatMsg(CSoftwareConfig config)
+
+QByteArray
+CMsgOperation::createChatMsg(CSoftwareConfig config)
 {
     QMap<QString, QVariant> fontStyleMap;
     QVariant fontFamilyVariant(config.fontConfig.fontFamily);
@@ -79,8 +86,8 @@ QByteArray CMsgOperation::createChatMsg(CSoftwareConfig config)
     QVariant fontStyleMapVar(fontStyleMap);
 
     QMap<QString, QVariant> chatContentMap;
-    chatContentMap.insert("userName",config.sendUsr);
-    chatContentMap.insert("content", config.sendMsg);
+    chatContentMap.insert("userName",config.chatUsr);
+    chatContentMap.insert("content", config.chatMsg);
     chatContentMap.insert("fontStyle", fontStyleMapVar);
     QVariant chatMsgContent(chatContentMap);
     QMap<QString, QVariant> chatMsgMap;

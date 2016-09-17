@@ -17,11 +17,11 @@ public:
 
     //当前在线的用户列表
     QMap<QString,QHostAddress> *mOnlineUsrMap;
-   //处理收到的聊天消息
+    //处理收到的聊天消息
     void ProcessRecvMsg(QByteArray data) override;
 signals:
-   void NewUsrOnline(QString username);
-   void OldUsrOffline(QString username);
+    void NewUsrOnline(QString username);
+    void OldUsrOffline(QString username);
 
 };
 

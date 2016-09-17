@@ -15,7 +15,7 @@ QSqlError CDatabaseOperation::initDb() {
     }
     else {
         db = QSqlDatabase::addDatabase("QSQLITE");
-        db.setDatabaseName("account.db");
+        db.setDatabaseName(DATABASE_NAME);
         if (!db.open()) {
             return db.lastError();
         }
